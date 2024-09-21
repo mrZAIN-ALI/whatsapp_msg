@@ -7,7 +7,6 @@ import '../extension/custom_theme_extension.dart';
 ThemeData lightTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
-    backgroundColor: Coloors.backgroundLight,
     scaffoldBackgroundColor: Coloors.backgroundLight,
     extensions: [CustomThemeExtension.lightMode],
     appBarTheme: const AppBarTheme(
@@ -67,6 +66,6 @@ ThemeData lightTheme() {
     switchTheme: const SwitchThemeData(
       thumbColor: MaterialStatePropertyAll(Color(0xFF83939C)),
       trackColor: MaterialStatePropertyAll(Color(0xFFDADFE2)),
-    ),
+    ), colorScheme: ColorScheme(background: Coloors.backgroundLight),
   );
 }
