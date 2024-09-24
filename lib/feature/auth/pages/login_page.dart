@@ -91,8 +91,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   void initState() {
-    countryNameController = TextEditingController(text: 'Ethiopia');
-    countryCodeController = TextEditingController(text: '251');
+    countryNameController = TextEditingController(text: 'Pakistan');
+    countryCodeController = TextEditingController(text: '92');
     phoneNumberController = TextEditingController();
     super.initState();
   }

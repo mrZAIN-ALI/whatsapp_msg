@@ -127,10 +127,15 @@ class AuthRepository {
         context: context,
         message: 'Verifiying code ... ',
       );
+      
+      print("smsCodeId");
+      print(smsCodeId);
+      print(smsCode);
       final credential = PhoneAuthProvider.credential(
         verificationId: smsCodeId,
         smsCode: smsCode,
       );
+
       await auth.signInWithCredential(credential);
       UserModel? user = await getCurrentUserInfo();
       if (!mounted) return;
@@ -146,7 +151,43 @@ class AuthRepository {
     }
   }
 
-  void sendSmsCode({
+  // void sendSmsCode({
+  //   required BuildContext context,
+  //   required String phoneNumber,
+  // }) async {
+  //   try {
+  //     showLoadingDialog(
+  //       context: context,
+  //       message: "Sending a verification code to $phoneNumber",
+  //     );
+  //     await auth.verifyPhoneNumber(
+  //       phoneNumber: phoneNumber,
+  //       verificationCompleted: (PhoneAuthCredential credential) async {
+  //         await auth.signInWithCredential(credential);
+  //       },
+  //       verificationFailed: (e) {
+  //         showAlertDialog(context: context, message: e.toString());
+  //       },
+  //       codeSent: (smsCodeId, resendSmsCodeId) {
+  //         Navigator.pushNamedAndRemoveUntil(
+  //           context,
+  //           Routes.verification,
+  //           (route) => false,
+  //           arguments: {
+  //             'phoneNumber': phoneNumber,
+  //             'smsCodeId': smsCodeId,
+  //           },
+  //         );
+  //       },
+  //       codeAutoRetrievalTimeout: (String smsCodeId) {},
+  //     );
+  //   } on FirebaseAuthException catch (e) {
+  //     Navigator.pop(context);
+  //     showAlertDialog(context: context, message: e.toString());
+  //   }
+  // }
+
+    void sendSmsCode({
     required BuildContext context,
     required String phoneNumber,
   }) async {
