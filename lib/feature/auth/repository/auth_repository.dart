@@ -127,16 +127,30 @@ class AuthRepository {
         context: context,
         message: 'Verifiying code ... ',
       );
-      
+
       print("smsCodeId");
       print(smsCodeId);
       print(smsCode);
-      final credential = PhoneAuthProvider.credential(
-        verificationId: smsCodeId,
-        smsCode: smsCode,
-      );
 
-      await auth.signInWithCredential(credential);
+      // final credential = PhoneAuthProvider.credential(
+      //   verificationId: smsCodeId,
+      //   smsCode: smsCode,
+      // );
+
+      // await auth.signInWithCredential(credential);
+      try {
+        final credential = PhoneAuthProvider.credential(
+          verificationId: smsCodeId,
+          smsCode: smsCode,
+        );
+
+        await auth.signInWithCredential(credential);
+      } catch (e, stackTrace) {
+        print('Error signing in with credential: $e');
+        print('StackTrace: $stackTrace');
+        showAlertDialog(context: context, message: e.toString());
+      }
+
       UserModel? user = await getCurrentUserInfo();
       if (!mounted) return;
       Navigator.pushNamedAndRemoveUntil(
@@ -187,7 +201,7 @@ class AuthRepository {
   //   }
   // }
 
-    void sendSmsCode({
+  void sendSmsCode({
     required BuildContext context,
     required String phoneNumber,
   }) async {
