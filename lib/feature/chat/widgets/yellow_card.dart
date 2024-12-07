@@ -3,8 +3,8 @@ import 'package:whatsapp_messenger/common/extension/custom_theme_extension.dart'
 
 class YellowCard extends StatelessWidget {
   const YellowCard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

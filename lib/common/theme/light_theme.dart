@@ -64,10 +64,10 @@ ThemeData lightTheme() {
       tileColor: Coloors.backgroundLight,
     ),
     switchTheme: const SwitchThemeData(
-      thumbColor: MaterialStatePropertyAll(Color(0xFF83939C)),
-      trackColor: MaterialStatePropertyAll(Color(0xFFDADFE2)),
+      thumbColor: WidgetStatePropertyAll(Color(0xFF83939C)),
+      trackColor: WidgetStatePropertyAll(Color(0xFFDADFE2)),
     ),
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
       brightness: Brightness.light,
       primary: Coloors.greenLight,
       onPrimary: Colors.white,
@@ -75,8 +75,6 @@ ThemeData lightTheme() {
       onSecondary: Colors.white,
       error: Colors.red,
       onError: Colors.white,
-      background: Coloors.backgroundLight,
-      onBackground: Colors.black,
       surface: Coloors.backgroundLight,
       onSurface: Colors.black,
     ),
